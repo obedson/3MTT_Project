@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase Form</title>
+    <style>
+        @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-image: url('https://via.placeholder.com/1500'); /* Replace with your background image */
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            color: white;
+        }
+        .container {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            padding: 20px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            margin-top: 70px; /* Adjust based on header-navbar height */
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            text-align: left;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #0072ef;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #005bb5;
+        }
+        .form-group {
+            text-align: left;
+        }
+        .header-navbar {
+            width: 100%;
+            background-color: #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+        }
+        .header-navbar .menu, .header-navbar .close {
+            cursor: pointer;
+        }
+        .header-navbar .close {
+            display: none;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            background-color: #333;
+            position: fixed;
+            bottom: 0;
+            padding: 10px 0;
+        }
+        .navbar div {
+            color: white;
+            text-align: center;
+            flex-grow: 1;
+        }
+        .navbar div .material-icons {
+            font-size: 30px;
+        }
+        .navbar a {
+            text-decoration: none;
+            color: white;
+        }
+        @media (max-width: 600px) {
+            .top-section {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            .actions .left, .actions .right {
+                flex-direction: row;
+                justify-content: center;
+                width: 100%;
+            }
+            .actions .action {
+                margin: 5px;
+            }
+            .header-navbar .menu.active {
+                display: none;
+            }
+            .header-navbar .close.active {
+                display: block;
+            }
+            .header-navbar nav {
+                display: none;
+            }
+            .header-navbar .close.active + nav {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                background-color: #333;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header-navbar">
+        <a href="Login.html">Login</a>
+        <span class="material-icons menu">menu</span>
+        <span class="material-icons close">close</span>
+        <nav>
+            <a href="#">Dashboard</a>
+            <a href="#">Blog</a>
+            <a href="#">Partner</a>
+            <a href="#">Our Mission</a>
+        </nav>
+    </div>
+
+    <div class="container">
+        <h1>Register</h1>
+        <form id="register-form">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="text" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+    <div class="navbar">
+        <div>
+            <a href="index.html">
+                <span class="material-icons">home</span>
+                <div>Home</div>
+            </a>
+        </div>
+        <div>
+            <span class="material-icons">group</span>
+            <div>Invite</div>
+        </div>
+        <div>
+            <span class="material-icons">card_giftcard</span>
+            <div>Volunteer</div>
+        </div>
+        <div>
+            <span class="material-icons">location_city</span>
+            <div>City</div>
+        </div>
+        <div>
+            <a href="quests.html">
+                <span class="material-icons">assignment</span>
+                <div>Earn</div>
+            </a>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_PROJECT_ID.appspot.com",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+
+        // Initialize Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        // Register form submission
+        document.getElementById('register-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const username = e.target.username.value;
+            const email = e.target.email.value;
+            const phone = e.target.phone.value;
+            const address = e.target.address.value;
+            const password = e.target.password.value;
+
+            try {
+                // Create user with email and password
+                const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+                const user = userCredential.user;
+
+                // Store additional user information in Firestore
+                await db.collection('users').doc(user.uid).set({
+                    username: username,
+                    email: email,
+                    phone: phone,
+                    address: address
+                });
+
+                alert('User registered successfully');
+            } catch (error) {
+                console.error('Error registering user:', error);
+                alert('Error registering user: ' + error.message);
+            }
+        });
+        
+        const menu = document.querySelector('.menu');
+        const close = document.querySelector('.close');
+        const nav = document.querySelector('nav');
+        
+        menu.addEventListener('click', function() {
+            this.classList.add('active');
+            close.classList.add('active');
+            nav.classList.add('active');
+        });
+
+        close.addEventListener('click', function() {
+            this.classList.remove('active');
+            menu.classList.remove('active');
+            nav.classList.remove('active');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Course Platform</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .header-navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #007BFF;
+            padding: 10px 20px;
+            color: white;
+        }
+
+        .header-navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .header-navbar .menu, .header-navbar .close {
+            cursor: pointer;
+            display: none;
+        }
+
+        .header-navbar nav {
+            display: flex;
+        }
+
+        @media (max-width: 768px) {
+            .header-navbar nav {
+                display: none;
+                flex-direction: column;
+                background-color: #007BFF;
+                position: absolute;
+                top: 50px;
+                right: 20px;
+                width: 200px;
+                text-align: center;
+            }
+
+            .header-navbar .menu {
+                display: inline;
+            }
+
+            .header-navbar.active nav {
+                display: flex;
+            }
+
+            .header-navbar .menu {
+                display: none;
+            }
+
+            .header-navbar .close {
+                display: inline;
+            }
+        }
+
+        .page-title {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .page-description {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .search-filter {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .filter-btn {
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .search-bar {
+            display: flex;
+            flex-grow: 1;
+        }
+
+        .search-bar input {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px 0 0 5px;
+        }
+
+        .search-icon {
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+
+        .video-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            overflow-y: auto;
+        }
+
+        .video-card {
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-card iframe {
+            width: 100%;
+            height: 150px;
+            border-radius: 10px;
+            border: none;
+        }
+
+        .video-card h3 {
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
+
+        .video-card p {
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-navbar">
+        <a href="Register.html">Register Now</a>
+        <span class="material-icons menu">menu</span>
+        <span class="material-icons close">close</span>
+        <nav>
+            <a href="#">Dashboard</a>
+            <a href="#">Blog</a>
+            <a href="#">Partner</a>
+            <a href="#">Our Mission</a>
+        </nav>
+    </div>
+    
+    <div class="container">
+        <div class="page-title">
+            <h1>Academy</h1>
+        </div>
+        <div class="page-description">
+            <p>Welcome to our Academy, where you can find a wide range of video courses to enhance your skills and knowledge. Browse through our categories or use the search feature to find the perfect course for you.</p>
+        </div>
+        <div class="search-filter">
+            <button class="filter-btn">Categories</button>
+            <button class="filter-btn">Recent</button>
+            <button class="filter-btn">Popular</button>
+            <button class="filter-btn">Duration</button>
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+                <button class="search-icon">🔎</button>
+            </div>
+        </div>
+        <div class="video-cards">
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                <h3>Video Title 1</h3>
+                <p>Excerpt of the video description goes here. It's a brief overview of the content.</p>
+            </div>
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                <h3>Video Title 2</h3>
+                <p>Excerpt of the video description goes here. It's a brief overview of the content.</p>
+            </div>
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                <h3>Video Title 3</h3>
+                <p>Excerpt of the video description goes here. It's a brief overview of the content.</p>
+            </div>
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                <h3>Video Title 4</h3>
+                <p>Excerpt of the video description goes here. It's a brief overview of the content.</p>
+            </div>
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                <h3>Video Title 5</h3>
+                <p>Excerpt of the video description goes here. It's a brief overview of the content.</p>
+            </div>
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                <h3>Video Title 6</h3>
+                <p>Excerpt of the video description goes here. It's a brief overview of the content.</p>
+            </div>
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                <h3>Video Title 7</h3>
+                <p>Excerpt of the video description goes here. It's a brief overview of the content.</p>
+            </div>
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                <h3>Video Title 8</h3>
+                <p>Excerpt of the video description goes here. It's a brief overview of the content.</p>
+            </div>
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                <h3>Video Title 9</h3>
+                <p>Excerpt of the video description goes here. It's a brief overview of the content.</p>
+            </div>
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                <h3>Video Title 10</h3>
+                <p>Excerpt of the video description goes here. It's a brief overview of the content.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('.menu').addEventListener('click', function() {
+            document.querySelector('.header-navbar').classList.add('active');
+        });
+        document.querySelector('.close').addEventListener('click', function() {
+            document.querySelector('.header-navbar').classList.remove('active');
+        });
+    </script>
+</body>
+</html>

@@ -3,169 +3,320 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leaderboard</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Video Course Platform</title>
     <style>
-        /* Your CSS styles here */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
             margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            font-family: Arial, sans-serif;
             height: 100vh;
-        }
-        .container {
-            max-width: 400px;
-            width: 100%;
-            margin: 20px;
-            padding: 20px;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            flex: 1;
             display: flex;
             flex-direction: column;
         }
-        .header {
-            font-size: 24px;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-        .promo {
-            background-color: #ffffff;
-            padding: 10px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+        .header-navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background-color: #007BFF;
+            padding: 10px 20px;
+            color: white;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
         }
-        .promo-details {
-            text-align: left;
+
+        .header-navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
         }
-        .promo img {
-            width: 60px;
-            height: 60px;
+
+        .header-navbar .menu, .header-navbar .close {
+            cursor: pointer;
+            display: none;
         }
-        .leaderboard {
-            list-style-type: none;
-            padding: 0;
-            flex: 1;
-            overflow-y: auto;
-        }
-        .leaderboard li {
+
+        .header-navbar nav {
             display: flex;
-            justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px solid #e0e0e0;
         }
+
+        @media (max-width: 768px) {
+            .header-navbar nav {
+                display: none;
+                flex-direction: column;
+                background-color: #007BFF;
+                position: absolute;
+                top: 50px;
+                right: 20px;
+                width: 200px;
+                text-align: center;
+            }
+
+            .header-navbar .menu {
+                display: inline;
+            }
+
+            .header-navbar.active nav {
+                display: flex;
+            }
+
+            .header-navbar .menu {
+                display: none;
+            }
+
+            .header-navbar .close {
+                display: inline;
+            }
+        }
+
+        .page-title {
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .page-description {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .search-filter {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 60px;
+            padding: 10px 20px;
+            background-color: #f1f1f1;
+            position: fixed;
+            top: 50px;
+            width: 100%;
+            z-index: 900;
+        }
+
+        .filter-btn {
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .search-bar {
+            display: flex;
+            flex-grow: 1;
+        }
+
+        .search-bar input {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px 0 0 5px;
+        }
+
+        .search-icon {
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+
+        .content {
+            padding: 160px 20px 80px;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+
+        .video-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .video-card {
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-card iframe {
+            width: 100%;
+            height: 150px;
+            border-radius: 10px;
+            border: none;
+        }
+
+        .video-card h3 {
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
+
+        .video-card p {
+            color: #666;
+            font-size: 0.9em;
+        }
+
         .footer {
             display: flex;
             justify-content: space-around;
+            align-items: center;
+            background-color: #007BFF;
             padding: 10px;
-            background-color: #f5f5f5;
+            position: fixed;
+            bottom: 0;
             width: 100%;
-            box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            color: white;
         }
+
         .footer div {
             text-align: center;
         }
+
         .footer a {
+            color: white;
             text-decoration: none;
-            color: #666;
         }
+
         .footer .material-icons {
             font-size: 24px;
         }
+
         .footer span {
             display: block;
             font-size: 12px;
         }
-        @media (min-width: 768px) {
-            .container {
-                margin: 40px auto;
-                padding: 30px;
-                max-width: 600px;
-            }
-            .header {
-                font-size: 28px;
-            }
-            .footer .material-icons {
-                font-size: 28px;
-            }
-            .footer span {
-                font-size: 14px;
-            }
-        }
     </style>
 </head>
 <body>
+    <div class="header-navbar">
+        <a href="Register.html">Register Now</a>
+        <span class="material-icons menu">menu</span>
+        <span class="material-icons close">close</span>
+        <nav>
+            <a href="#">Dashboard</a>
+            <a href="#">Blog</a>
+            <a href="#">Partner</a>
+            <a href="#">Our Mission</a>
+        </nav>
+    </div>
 
-<div class="container">
-    <div class="header">Leaderboard</div>
-    <div class="promo">
-        <div class="promo-details">
-            <div>Get crypto</div>
-            <div>+1K USDT +50M$</div>
-            <a href="#" style="color: blue;">More details &rarr;</a>
+    <div class="search-filter">
+        <button class="filter-btn">Categories</button>
+        <button class="filter-btn">Recent</button>
+        <button class="filter-btn">Popular</button>
+        <button class="filter-btn">Duration</button>
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+            <button class="search-icon">🔎</button>
         </div>
-        <img src="https://via.placeholder.com/60" alt="Promo">
     </div>
-    <ul class="leaderboard" id="leaderboard">
-        <!-- Leaderboard items will be dynamically added here -->
-    </ul>
-</div>
+    
+    <div class="container">
+        <div class="page-title">
+            <h1>Academy</h1>
+        </div>
+        <div class="page-description">
+            <p>Welcome to our Academy, where you can find a wide range of video courses to enhance your skills and knowledge. Browse through our categories or use the search feature to find the perfect course for you.</p>
+        </div>
+        <div class="content">
+            <div class="video-cards">
+                <div class="video-card">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                    <h3>Video Title 1</h3>
+                    <p>Excerpt of the video description goes here. It's a brief overview of the content.</p>
+                </div>
+                <div class="video-card">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                    <h3>Video Title 2</h3>
+                    <p>Excerpt of the video description goes here. It's a brief overview of the content.</p>
+                </div>
+                <div class="video-card">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                    <h3>Video Title 3</h3>
+                    <p>Excerpt of the video description goes here. It's a brief overview of the content.</p>
+                </div>
+                <div class="video-card">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                    <h3>Video Title 4</h3>
+                    <p>Excerpt of the video description goes here. It's a brief overview of the content.</p>
+                </div>
+                <div class="video-card">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                    <h3>Video Title 5</h3>
+                    <p>Excerpt of the video description goes here. It's a brief overview of the content.</p>
+                </div>
+                <div class="video-card">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                    <h3>Video Title 6</h3>
+                    <p>Excerpt of the video description goes here. It's a brief overview of the content.</p>
+                </div>
+                <div class="video-card">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                    <h3>Video Title 7</h3>
+                    <p>Excerpt of the video description goes here. It's a brief overview of the content.</p>
+                </div>
+                <div class="video-card">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                    <h3>Video Title 8</h3>
+                    <p>Excerpt of the video description goes here. It's a brief overview of the content.</p>
+                </div>
+                <div class="video-card">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                    <h3>Video Title 9</h3>
+                    <p>Excerpt of the video description goes here. It's a brief overview of the content.</p>
+                </div>
+                <div class="video-card">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                    <h3>Video Title 10</h3>
+                    <p>Excerpt of the video description goes here. It's a brief overview of the content.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<div class="footer">
-    <div>
-        <a href="index.html">
-            <i class="material-icons">home</i>
-            <span>Home</span>
-        </a>
+    <div class="footer">
+        <div>
+            <a href="index.html">
+                <i class="material-icons">home</i>
+                <span>Home</span>
+            </a>
+        </div>
+        <div>
+            <a href="#tasks">
+                <i class="material-icons">assignment</i>
+                <span>Tasks</span>
+            </a>
+        </div>
+        <div>
+            <a href="#frens">
+                <i class="material-icons">group</i>
+                <span>Frens</span>
+            </a>
+        </div>
+        <div>
+            <a href="Activity.html">
+                <i class="material-icons">emoji_events</i>
+                <span>Activity</span>
+            </a>
+        </div>
+        <div>
+            <a href="quests.html">
+                <i class="material-icons">monetization_on</i>
+                <span>Earn</span>
+            </a>
+        </div>
+        <div>
+            <a href="#wallet">
+                <i class="material-icons">account_balance_wallet</i>
+                <span>Wallet</span>
+            </a>
+        </div>
     </div>
-    <div>
-        <a href="#tasks">
-            <i class="material-icons">assignment</i>
-            <span>Tasks</span>
-        </a>
-    </div>
-    <div>
-        <a href="#frens">
-            <i class="material-icons">group</i>
-            <span>Frens</span>
-        </a>
-    </div>
-    <div>
-        <a href="#activity">
-            <i class="material-icons">emoji_events</i>
-            <span>Activity</span>
-        </a>
-    </div>
-    <div>
-        <a href="#earn">
-            <i class="material-icons">monetization_on</i>
-            <span>Earn</span>
-        </a>
-    </div>
-    <div>
-        <a href="#wallet">
-            <i class="material-icons">account_balance_wallet</i>
-            <span>Wallet</span>
-        </a>
-    </div>
-</div>
-
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- Firebase -->
-<script src="https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.8/firebase-database.js"></script>
-<!-- Custom Script -->
-<script src="script.js"></script>
-
 </body>
 </html>

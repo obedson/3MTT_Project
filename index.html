@@ -30,12 +30,10 @@
           opacity: 0%;
         }
       }
-        
-        
 
         body {
             font-family: Arial, sans-serif;
-            background: #ebeef3; /* Use your background image */
+            background-image: url('/assets/images/musk.jpg'); /* Use your background image */
             background-size: cover;
             margin: 0;
             display: flex;
@@ -72,6 +70,7 @@
         }
         .header-navbar .menu, .header-navbar .close {
             cursor: pointer;
+            color: white;
         }
         .header-navbar .close {
             display: none;
@@ -175,7 +174,7 @@
 </head>
 <body>
     <div class="header-navbar">
-        <a href="#">Register Now</a>
+        <a href="Register.html">Register Now</a>
         
         <span class="material-icons menu">menu</span>
         <span class="material-icons close">close</span>
@@ -207,22 +206,25 @@
             </a>
         </div>
         <div>
+          <a href="Invite.html">
             <span class="material-icons">group</span>
             <div>Invite</div>
+            </a>
+        </div>
+        <div>
+            <span class="material-icons">location_city</span>
+            <div>Academy </div>
         </div>
         <div>
             <span class="material-icons">card_giftcard</span>
             <div>Volunteer</div>
         </div>
         <div>
-            <span class="material-icons">location_city</span>
-            <div>City</div>
-        </div>
-        <div>
             <a href="quests.html">
                 <span class="material-icons">assignment</span>
                 <div>Earn</div>
             </a>
+            
         </div>
     </div>
 
@@ -265,7 +267,7 @@
         return new Promise((resolve) => setTimeout(resolve, ms));
       }
 
-      const phrases = [" to Mr. President, His Execellency, Bola Ahmed Tinubu and the Renewed Hope Agenda", " to Mr. Bosun Tijani, The Honourable Minister of Communication Innovation & Digital Economy and the 3MTT Team."];
+      const phrases = [" to Mr. President, His Execellency, Bola Ahmed Tinubu and the Renewed Hope Agenda.", " to Mr. Bosun Tijani, The Honourable Minister of Communication, Innovation & Digital Economy and the 3MTT Team.", "also, to my Able Community Manager, Mr. Anosike Mmerichukwu, 3MTT Enugu."];
       const el = document.getElementById("typewriter");
 
       let sleepTime = 100;

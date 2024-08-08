@@ -4,43 +4,92 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quests</title>
-    <style>
+   <style>
+        @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            background-image: url('/assets/images/musk.jpg'); /* Use your background image */
+            background-size: cover;
             margin: 0;
-            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
         }
         .container {
+            width: 90%;
             max-width: 600px;
-            margin: auto;
-            background-color: white;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         h1 {
-            text-align: center;
+            color: #333;
         }
         ul {
-            list-style: none;
+            list-style-type: none;
             padding: 0;
+            width: 100%;
         }
         li {
-            background-color: #e7e7e7;
+            background-color: #f9f9f9;
             margin: 10px 0;
             padding: 10px;
             border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .nav-link {
-            display: block;
+        li a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            background-color: #333;
+            position: fixed;
+            bottom: 0;
+            padding: 10px 0;
+        }
+        .navbar div {
+            color: white;
             text-align: center;
-            margin: 20px 0;
+            flex-grow: 1;
+        }
+        .navbar div .material-icons {
+            font-size: 30px;
+        }
+        .navbar a {
             text-decoration: none;
             color: white;
-            background-color: #333;
-            padding: 10px;
-            border-radius: 5px;
+        }
+        @media (max-width: 600px) {
+            .container {
+                margin-top: 10px;
+                padding: 10px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            ul {
+                width: 100%;
+            }
+            li {
+                padding: 8px;
+                font-size: 14px;
+            }
+            .navbar div .material-icons {
+                font-size: 24px;
+            }
+            
         }
     </style>
 </head>
@@ -48,16 +97,42 @@
     <div class="container">
         <h1>Quests</h1>
         <ul>
-            <li>Subscribe to YouTube channel</li>
-            <li>Subscribe to Telegram channel</li>
-            <li>Follow on Twitter</li>
-            <li>Follow on Instagram</li>
-            <li>Follow on TikTok</li>
-            <li>Follow on Facebook</li>
-            <li>Like a Twitter post</li>
-            <li>View a YouTube video</li>
+            <li><a href="https://youtube.com/@obedsonfieldtv?si=AudyF-u_MvQSajHr">Subscribe to YouTube channel</a></li>
+            <li><a href="https://t.me/mobioffice">Join Telegram channel</a></li>
+            <li><a href="https://x.com/iobedson">Follow us on Twitter</a></li>
+            <li><a href="#">Follow on Instagram</a></li>
+            <li><a href="#">Follow on TikTok</a></li>
+            <li><a href="#">Follow on Facebook</a></li>
+            <li><a href="#">Like Twitter post</a></li>
+            <li><a href="#">View YouTube video</a></li>
         </ul>
-        <a href="index.html" class="nav-link">Back to Home</a>
+    </div>
+
+    <div class="navbar">
+        <div>
+            <a href="index.html">
+                <span class="material-icons">home</span>
+                <div>Home</div>
+            </a>
+        </div>
+        <div>
+            <span class="material-icons">group</span>
+            <div>Invite</div>
+        </div>
+        <div>
+            <span class="material-icons">card_giftcard</span>
+            <div>Volunteer</div>
+        </div>
+        <div>
+            <span class="material-icons">location_city</span>
+            <div>City</div>
+        </div>
+        <div>
+            <a href="quests.html">
+                <span class="material-icons">assignment</span>
+                <div>Earn</div>
+            </a>
+        </div>
     </div>
 </body>
 </html>
