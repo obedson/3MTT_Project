@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI Example</title>
+    <style>
+        @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
+        
+        h1 {
+        font-size: 50px;
+      }
+
+      #typewriter {
+        color: #0072ef;
+        font-weight: bold;
+      }
+
+      #cursor {
+        color: #0072ef;
+        animation: blink 1s linear infinite;
+      }
+
+      @keyframes blink {
+        0% {
+          opacity: 100%;
+        }
+        50% {
+          opacity: 0%;
+        }
+      }
+        
+        
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #ebeef3; /* Use your background image */
+            background-size: cover;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            width: 90%;
+            max-width: 600px;
+            background-color: transparent;
+            border-radius: 15px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .header-navbar {
+            width: 100%;
+            background-color: #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+        }
+        .header-navbar .menu, .header-navbar .close {
+            cursor: pointer;
+        }
+        .header-navbar .close {
+            display: none;
+        }
+        .carousel {
+            width: calc(100% - 20px); /* Full width minus margin */
+            display: flex;
+            overflow: hidden;
+            position: relative;
+            margin: 60px 10px 20px 10px; /* Adjust based on header-navbar height and margin */
+            justify-content: center;
+        }
+        .carousel img {
+            width: 100%;
+            border-radius: 15px;
+        }
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .carousel-inner .carousel-card {
+            min-width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: white;
+        }
+        .typewriter-text {
+            display: inline-block;
+            border-right: 2px solid white;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: white; }
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            background-color: #333;
+            position: fixed;
+            bottom: 0;
+            padding: 10px 0;
+        }
+        .navbar div {
+            color: white;
+            text-align: center;
+            flex-grow: 1;
+        }
+        .navbar div .material-icons {
+            font-size: 30px;
+        }
+        .navbar a {
+            text-decoration: none;
+            color: white;
+        }
+        @media (max-width: 600px) {
+            .top-section {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            .actions .left, .actions .right {
+                flex-direction: row;
+                justify-content: center;
+                width: 100%;
+            }
+            .actions .action {
+                margin: 5px;
+            }
+            .header-navbar .menu.active {
+                display: none;
+            }
+            .header-navbar .close.active {
+                display: block;
+            }
+            .header-navbar nav {
+                display: none;
+            }
+            .header-navbar .close.active + nav {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                background-color: #333;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header-navbar">
+        <a href="#">Register Now</a>
+        
+        <span class="material-icons menu">menu</span>
+        <span class="material-icons close">close</span>
+        <nav>
+            <a href="#">Dashboard</a>
+            <a href="#">Blog</a>
+            <a href="#">Partner</a>
+            <a href="#">Our Mission</a>
+        </nav>
+    </div>
+
+    <div class="carousel">
+        <div class="carousel-inner">
+           
+            <div class="carousel-card">
+               <h4>
+      A Special 👋 <br />Thanks  <span id="typewriter"></span
+      ><span id="cursor">|</span>
+    </h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="navbar">
+        <div>
+            <a href="index.html">
+                <span class="material-icons">home</span>
+                <div>Home</div>
+            </a>
+        </div>
+        <div>
+            <span class="material-icons">group</span>
+            <div>Invite</div>
+        </div>
+        <div>
+            <span class="material-icons">card_giftcard</span>
+            <div>Volunteer</div>
+        </div>
+        <div>
+            <span class="material-icons">location_city</span>
+            <div>City</div>
+        </div>
+        <div>
+            <a href="quests.html">
+                <span class="material-icons">assignment</span>
+                <div>Earn</div>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const menu = document.querySelector('.menu');
+        const close = document.querySelector('.close');
+        const nav = document.querySelector('nav');
+        
+        menu.addEventListener('click', function() {
+            this.classList.add('active');
+            close.classList.add('active');
+            nav.classList.add('active');
+        });
+
+        close.addEventListener('click', function() {
+            this.classList.remove('active');
+            menu.classList.remove('active');
+            nav.classList.remove('active');
+        });
+
+        let index = 0;
+        const slides = document.querySelectorAll('.carousel-inner .carousel-card');
+        const totalSlides = slides.length;
+
+        function showSlide(slideIndex) {
+            const offset = slideIndex * 100;
+            const carouselInner = document.querySelector('.carousel-inner');
+            carouselInner.style.transform = `translateX(-${offset}%)`;
+        }
+
+        function nextSlide() {
+            index = (index + 1) % totalSlides;
+            showSlide(index);
+        }
+
+        setInterval(nextSlide, 3000);
+    </script>
+    <script>
+      function sleep(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+      }
+
+      const phrases = [" to Mr. President, His Execellency, Bola Ahmed Tinubu and the Renewed Hope Agenda", " to Mr. Bosun Tijani, The Honourable Minister of Communication Innovation & Digital Economy and the 3MTT Team."];
+      const el = document.getElementById("typewriter");
+
+      let sleepTime = 100;
+
+      let curPhraseIndex = 0;
+
+      const writeLoop = async () => {
+        while (true) {
+          let curWord = phrases[curPhraseIndex];
+
+          for (let i = 0; i < curWord.length; i++) {
+            el.innerText = curWord.substring(0, i + 1);
+            await sleep(sleepTime);
+          }
+
+          await sleep(sleepTime * 10);
+
+          for (let i = curWord.length; i > 0; i--) {
+            el.innerText = curWord.substring(0, i - 1);
+            await sleep(sleepTime);
+          }
+
+          await sleep(sleepTime * 5);
+
+          if (curPhraseIndex === phrases.length - 1) {
+            curPhraseIndex = 0;
+          } else {
+            curPhraseIndex++;
+          }
+        }
+      };
+
+      writeLoop();
+    </script>
+</body>
+</html>

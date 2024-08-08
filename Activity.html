@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* Your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            max-width: 400px;
+            width: 100%;
+            margin: 20px;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            font-size: 24px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .promo {
+            background-color: #ffffff;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .promo-details {
+            text-align: left;
+        }
+        .promo img {
+            width: 60px;
+            height: 60px;
+        }
+        .leaderboard {
+            list-style-type: none;
+            padding: 0;
+            flex: 1;
+            overflow-y: auto;
+        }
+        .leaderboard li {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .footer {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px;
+            background-color: #f5f5f5;
+            width: 100%;
+            box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+        }
+        .footer div {
+            text-align: center;
+        }
+        .footer a {
+            text-decoration: none;
+            color: #666;
+        }
+        .footer .material-icons {
+            font-size: 24px;
+        }
+        .footer span {
+            display: block;
+            font-size: 12px;
+        }
+        @media (min-width: 768px) {
+            .container {
+                margin: 40px auto;
+                padding: 30px;
+                max-width: 600px;
+            }
+            .header {
+                font-size: 28px;
+            }
+            .footer .material-icons {
+                font-size: 28px;
+            }
+            .footer span {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">Leaderboard</div>
+    <div class="promo">
+        <div class="promo-details">
+            <div>Get crypto</div>
+            <div>+1K USDT +50M$</div>
+            <a href="#" style="color: blue;">More details &rarr;</a>
+        </div>
+        <img src="https://via.placeholder.com/60" alt="Promo">
+    </div>
+    <ul class="leaderboard" id="leaderboard">
+        <!-- Leaderboard items will be dynamically added here -->
+    </ul>
+</div>
+
+<div class="footer">
+    <div>
+        <a href="index.html">
+            <i class="material-icons">home</i>
+            <span>Home</span>
+        </a>
+    </div>
+    <div>
+        <a href="#tasks">
+            <i class="material-icons">assignment</i>
+            <span>Tasks</span>
+        </a>
+    </div>
+    <div>
+        <a href="#frens">
+            <i class="material-icons">group</i>
+            <span>Frens</span>
+        </a>
+    </div>
+    <div>
+        <a href="#activity">
+            <i class="material-icons">emoji_events</i>
+            <span>Activity</span>
+        </a>
+    </div>
+    <div>
+        <a href="#earn">
+            <i class="material-icons">monetization_on</i>
+            <span>Earn</span>
+        </a>
+    </div>
+    <div>
+        <a href="#wallet">
+            <i class="material-icons">account_balance_wallet</i>
+            <span>Wallet</span>
+        </a>
+    </div>
+</div>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.8/firebase-database.js"></script>
+<!-- Custom Script -->
+<script src="script.js"></script>
+
+</body>
+</html>
