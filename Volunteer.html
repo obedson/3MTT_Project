@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon - FindX</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('/assets/images/ComingSoon.jpg');
+            background-size: cover;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            color: #fff;
+        }
+
+        .header-navbar {
+            width: 100%;
+            background-color: #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+        }
+
+        .header-navbar h2 {
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header-navbar .menu, 
+        .header-navbar .close {
+            cursor: pointer;
+            color: white;
+        }
+
+        .header-navbar .close {
+            display: none;
+        }
+
+        .coming-soon {
+            margin-top: 150px;
+        }
+
+        .coming-soon h1 {
+            font-size: 48px;
+            margin: 20px 0;
+            color: #0072ef;
+        }
+
+        .coming-soon p {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .countdown {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .notify-me-button {
+            background-color: #0072ef;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            background-color: #333;
+            position: fixed;
+            bottom: 0;
+            padding: 10px 0;
+        }
+
+        .navbar div {
+            color: white;
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .navbar div .material-icons {
+            font-size: 30px;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: white;
+        }
+
+        @media (max-width: 600px) {
+            .header-navbar nav {
+                display: none;
+            }
+
+            .header-navbar .menu.active {
+                display: none;
+            }
+
+            .header-navbar .close.active {
+                display: block;
+            }
+
+            .header-navbar nav.active {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                background-color: #333;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header-navbar">
+        <a href="Register.html" style="order: 1;">Register Now</a>
+        <h2 style="order: 2;">FindX</h2>
+        <span class="material-icons menu" style="order: 3;">menu</span>
+        <span class="material-icons close" style="order: 4;">close</span>
+        <nav style="order: 5;">
+            <a href="#">Dashboard</a>
+            <a href="#">Blog</a>
+            <a href="#">Partner</a>
+            <a href="#">Our Mission</a>
+        </nav>
+    </div>
+
+    <div class="coming-soon">
+        <h1>Coming Soon</h1>
+        <p>We're working hard to bring you something amazing! Stay tuned.</p>
+        <div class="countdown" id="countdown"></div>
+        <button class="notify-me-button">Notify Me</button>
+    </div>
+
+    <div class="navbar">
+        <div>
+            <a href="index.html">
+                <span class="material-icons">home</span>
+                <div>Home</div>
+            </a>
+        </div>
+        <div>
+            <a href="Explore.html">
+                <span class="material-icons">location_city</span>
+                <div>Explore</div>
+            </a>
+        </div>
+        <div>
+            <a href="Invite.html">
+                <span class="material-icons">group</span>
+                <div>Invite</div>
+            </a>
+        </div>
+        <div>
+      
+            <a href="Volunteer.html">
+            <span class="material-icons">card_giftcard</span>
+            <div>Volunteer</div>
+            </a>
+        </div>
+        <div>
+            <a href="quests.html">
+                <span class="material-icons">assignment</span>
+                <div>Earn</div>
+            </a>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        const menu = document.querySelector('.menu');
+        const close = document.querySelector('.close');
+        const nav = document.querySelector('nav');
+        
+        menu.addEventListener('click', function() {
+            this.classList.add('active');
+            close.classList.add('active');
+            nav.classList.add('active');
+        });
+
+        close.addEventListener('click', function() {
+            this.classList.remove('active');
+            menu.classList.remove('active');
+            nav.classList.remove('active');
+        });
+
+        // Countdown Timer
+        const countdownElement = document.getElementById('countdown');
+        const targetDate = new Date('2024-12-31T00:00:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+            if (difference < 0) {
+                clearInterval(countdownInterval);
+                countdownElement.innerHTML = "We're Live!";
+            }
+        }
+
+        const countdownInterval = setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
