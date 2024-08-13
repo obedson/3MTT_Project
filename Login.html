@@ -1,28 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
         @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+        @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
+        
+        h1 {
+            font-size: 50px;
+        }
+
+        #typewriter {
+            color: #0072ef;
+            font-weight: bold;
+        }
+
+        #cursor {
+            color: #0072ef;
+            animation: blink 1s linear infinite;
+        }
+
+        @keyframes blink {
+            0% {
+                opacity: 100%;
+            }
+            50% {
+                opacity: 0%;
+            }
+        }
 
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: off-white; /* Replace with your background image */
-            background-size: cover;
-            background-position: center;
+            background-color: #f5f5f5;
             margin: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
             height: 100vh;
-            color: white;
+            color: #333;
         }
+
         .container {
-            background-color: grey;
+            background-color: #fff;
             border-radius: 10px;
             padding: 20px;
             width: 90%;
@@ -31,25 +56,29 @@
             text-align: center;
             margin-top: 70px; /* Adjust based on header-navbar height */
         }
+
         h1 {
             margin-bottom: 20px;
             font-size: 24px;
         }
+
         label {
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
             text-align: left;
         }
+
         input[type="email"],
         input[type="password"] {
             width: 100%;
             padding: 10px;
             margin-bottom: 15px;
-            border: none;
+            border: 1px solid #ccc;
             border-radius: 5px;
             box-sizing: border-box;
         }
+
         button {
             background-color: #0072ef;
             color: white;
@@ -59,12 +88,15 @@
             cursor: pointer;
             font-size: 16px;
         }
+
         button:hover {
             background-color: #005bb5;
         }
+
         .form-group {
             text-align: left;
         }
+
         .header-navbar {
             width: 100%;
             background-color: #333;
@@ -76,17 +108,44 @@
             top: 0;
             z-index: 1000;
         }
+
         .header-navbar a {
             color: white;
             text-decoration: none;
             padding: 10px;
         }
-        .header-navbar .menu, .header-navbar .close {
+
+        .header-navbar .menu,
+        .header-navbar .close {
             cursor: pointer;
+            color: white;
         }
+
         .header-navbar .close {
             display: none;
         }
+
+        .header-navbar nav {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            background-color: #333;
+        }
+
+        .header-navbar .menu.active + nav,
+        .header-navbar .close.active + nav {
+            display: flex;
+        }
+
+        .header-navbar .menu.active {
+            display: none;
+        }
+
+        .header-navbar .close.active {
+            display: block;
+        }
+
         .navbar {
             display: flex;
             justify-content: space-around;
@@ -96,57 +155,39 @@
             bottom: 0;
             padding: 10px 0;
         }
+
         .navbar div {
             color: white;
             text-align: center;
             flex-grow: 1;
         }
+
         .navbar div .material-icons {
             font-size: 30px;
         }
+
         .navbar a {
             text-decoration: none;
             color: white;
         }
+
         @media (max-width: 600px) {
-            .top-section {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .actions {
-                flex-direction: column;
-                align-items: center;
-            }
-            .actions .left, .actions .right {
-                flex-direction: row;
-                justify-content: center;
-                width: 100%;
-            }
-            .actions .action {
-                margin: 5px;
-            }
-            .header-navbar .menu.active {
-                display: none;
-            }
-            .header-navbar .close.active {
-                display: block;
-            }
             .header-navbar nav {
                 display: none;
             }
-            .header-navbar .close.active + nav {
+
+            .header-navbar .menu.active + nav {
                 display: flex;
-                flex-direction: column;
-                align-items: center;
-                width: 100%;
-                background-color: #333;
             }
         }
     </style>
 </head>
+
 <body>
+
     <div class="header-navbar">
-        <a href="/Register.html">Register Now</a>
+        <a href="Register.html">Register Now</a> | 
+        <h2>FindX</h2>
         <span class="material-icons menu">menu</span>
         <span class="material-icons close">close</span>
         <nav>
@@ -180,16 +221,20 @@
             </a>
         </div>
         <div>
-            <span class="material-icons">group</span>
-            <div>Invite</div>
+            <a href="Explore.html">
+                <span class="material-icons">location_city</span>
+                <div>Explore</div>
+            </a>
+        </div>
+        <div>
+            <a href="Invite.html">
+                <span class="material-icons">group</span>
+                <div>Invite</div>
+            </a>
         </div>
         <div>
             <span class="material-icons">card_giftcard</span>
             <div>Volunteer</div>
-        </div>
-        <div>
-            <span class="material-icons">location_city</span>
-            <div>City</div>
         </div>
         <div>
             <a href="quests.html">
@@ -243,22 +288,23 @@
                 alert('Error signing in: ' + error.message);
             }
         });
-        
+
         const menu = document.querySelector('.menu');
         const close = document.querySelector('.close');
         const nav = document.querySelector('nav');
-        
-        menu.addEventListener('click', function() {
+
+        menu.addEventListener('click', function () {
             this.classList.add('active');
             close.classList.add('active');
             nav.classList.add('active');
         });
 
-        close.addEventListener('click', function() {
+        close.addEventListener('click', function () {
             this.classList.remove('active');
             menu.classList.remove('active');
             nav.classList.remove('active');
         });
     </script>
 </body>
+
 </html>
