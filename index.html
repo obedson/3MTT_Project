@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UI Example</title>
+    <title>FindX</title>
     <style>
         @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
         @import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
@@ -33,7 +33,7 @@
 
         body {
             font-family: Arial, sans-serif;
-            background-image: url('./assets/images/musk.jpg'); /* Use your background image */
+            background-image: url('/assets/images/musk.jpg'); /* Use your background image */
             background-size: cover;
             margin: 0;
             display: flex;
@@ -62,6 +62,9 @@
             position: fixed;
             top: 0;
             z-index: 1000;
+        }
+        .header-navbar h2 {
+            color: white;
         }
         .header-navbar a {
             color: white;
@@ -174,8 +177,8 @@
 </head>
 <body>
     <div class="header-navbar">
-        <a href="Register.html">Register Now</a>
-        
+        <a href="Register.html">Register Now</a> | 
+        <h2>FindX</h2>
         <span class="material-icons menu">menu</span>
         <span class="material-icons close">close</span>
         <nav>
@@ -206,18 +209,24 @@
             </a>
         </div>
         <div>
+          
+            <a href="Explore.html">
+            <span class="material-icons">location_city</span>
+            <div>Explore </div>
+            </a>
+        </div>
+        <div>
           <a href="Invite.html">
             <span class="material-icons">group</span>
             <div>Invite</div>
             </a>
         </div>
+        
         <div>
-            <span class="material-icons">location_city</span>
-            <div>Academy </div>
-        </div>
-        <div>
+          <a href="Activity.html">
             <span class="material-icons">card_giftcard</span>
             <div>Volunteer</div>
+            </a>
         </div>
         <div>
             <a href="quests.html">
