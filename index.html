@@ -3,9 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quests</title>
-   <style>
+    <title>FindX</title>
+    <style>
         @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
+        
+        h1 {
+        font-size: 50px;
+      }
+
+      #typewriter {
+        color: #0072ef;
+        font-weight: bold;
+      }
+
+      #cursor {
+        color: #0072ef;
+        animation: blink 1s linear infinite;
+      }
+
+      @keyframes blink {
+        0% {
+          opacity: 100%;
+        }
+        50% {
+          opacity: 0%;
+        }
+      }
 
         body {
             font-family: Arial, sans-serif;
@@ -20,35 +44,79 @@
         .container {
             width: 90%;
             max-width: 600px;
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: transparent;
             border-radius: 15px;
             overflow: hidden;
             display: flex;
             flex-direction: column;
             align-items: center;
             margin-top: 20px;
-            padding: 20px;
         }
-        h1 {
-            color: #333;
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
+        .header-navbar {
             width: 100%;
-        }
-        li {
-            background-color: #f9f9f9;
-            margin: 10px 0;
-            padding: 10px;
-            border-radius: 5px;
+            background-color: #333;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
         }
-        li a {
+        .header-navbar h2 {
+            color: white;
+        }
+        .header-navbar a {
+            color: white;
             text-decoration: none;
-            color: #007BFF;
+            padding: 10px;
+        }
+        .header-navbar .menu, .header-navbar .close {
+            cursor: pointer;
+            color: white;
+        }
+        .header-navbar .close {
+            display: none;
+        }
+        .carousel {
+            width: calc(100% - 20px); /* Full width minus margin */
+            display: flex;
+            overflow: hidden;
+            position: relative;
+            margin: 60px 10px 20px 10px; /* Adjust based on header-navbar height and margin */
+            justify-content: center;
+        }
+        .carousel img {
+            width: 100%;
+            border-radius: 15px;
+        }
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .carousel-inner .carousel-card {
+            min-width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: white;
+        }
+        .typewriter-text {
+            display: inline-block;
+            border-right: 2px solid white;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: white; }
         }
         .navbar {
             display: flex;
@@ -72,41 +140,65 @@
             color: white;
         }
         @media (max-width: 600px) {
-            .container {
-                margin-top: 10px;
-                padding: 10px;
+            .top-section {
+                flex-direction: column;
+                align-items: flex-start;
             }
-            h1 {
-                font-size: 24px;
+            .actions {
+                flex-direction: column;
+                align-items: center;
             }
-            ul {
+            .actions .left, .actions .right {
+                flex-direction: row;
+                justify-content: center;
                 width: 100%;
             }
-            li {
-                padding: 8px;
-                font-size: 14px;
+            .actions .action {
+                margin: 5px;
             }
-            .navbar div .material-icons {
-                font-size: 24px;
+            .header-navbar .menu.active {
+                display: none;
             }
-            
+            .header-navbar .close.active {
+                display: block;
+            }
+            .header-navbar nav {
+                display: none;
+            }
+            .header-navbar .close.active + nav {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                background-color: #333;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Quests</h1>
-        <h3>Complete the task below to earn points</h3>
-        <ul>
-            <li><a href="https://youtube.com/@obedsonfieldtv?si=AudyF-u_MvQSajHr">Subscribe to YouTube channel</a></li>
-            <li><a href="https://t.me/mobioffice">Join Telegram channel</a></li>
-            <li><a href="https://x.com/iobedson">Follow us on Twitter</a></li>
-            <li><a href="#">Follow on Instagram</a></li>
-            <li><a href="#">Follow on TikTok</a></li>
-            <li><a href="#">Follow on Facebook</a></li>
-            <li><a href="#">Like Twitter post</a></li>
-            <li><a href="#">View YouTube video</a></li>
-        </ul>
+    <div class="header-navbar">
+        <a href="Register.html">Register Now</a> | 
+        <h2>FindX</h2>
+        <span class="material-icons menu">menu</span>
+        <span class="material-icons close">close</span>
+        <nav>
+            <a href="#">Dashboard</a>
+            <a href="#">Blog</a>
+            <a href="#">Partner</a>
+            <a href="#">Our Mission</a>
+        </nav>
+    </div>
+
+    <div class="carousel">
+        <div class="carousel-inner">
+           
+            <div class="carousel-card">
+               <h4>
+      A Special 👋 <br />Thanks  <span id="typewriter"></span
+      ><span id="cursor">|</span>
+    </h4>
+            </div>
+        </div>
     </div>
 
     <div class="navbar">
@@ -117,9 +209,10 @@
             </a>
         </div>
         <div>
-           <a href="Explore.html">
+          
+            <a href="Explore.html">
             <span class="material-icons">location_city</span>
-            <div>Explore</div>
+            <div>Explore </div>
             </a>
         </div>
         <div>
@@ -128,19 +221,95 @@
             <div>Invite</div>
             </a>
         </div>
+        
         <div>
-           <a href="Activity.html">
+          <a href="Activity.html">
             <span class="material-icons">card_giftcard</span>
             <div>Volunteer</div>
             </a>
         </div>
-        
         <div>
             <a href="quests.html">
                 <span class="material-icons">assignment</span>
                 <div>Earn</div>
             </a>
+            
         </div>
     </div>
+
+    <script>
+        const menu = document.querySelector('.menu');
+        const close = document.querySelector('.close');
+        const nav = document.querySelector('nav');
+        
+        menu.addEventListener('click', function() {
+            this.classList.add('active');
+            close.classList.add('active');
+            nav.classList.add('active');
+        });
+
+        close.addEventListener('click', function() {
+            this.classList.remove('active');
+            menu.classList.remove('active');
+            nav.classList.remove('active');
+        });
+
+        let index = 0;
+        const slides = document.querySelectorAll('.carousel-inner .carousel-card');
+        const totalSlides = slides.length;
+
+        function showSlide(slideIndex) {
+            const offset = slideIndex * 100;
+            const carouselInner = document.querySelector('.carousel-inner');
+            carouselInner.style.transform = `translateX(-${offset}%)`;
+        }
+
+        function nextSlide() {
+            index = (index + 1) % totalSlides;
+            showSlide(index);
+        }
+
+        setInterval(nextSlide, 3000);
+    </script>
+    <script>
+      function sleep(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+      }
+
+      const phrases = [" to Mr. President, His Execellency, Bola Ahmed Tinubu and the Renewed Hope Agenda.", " to Mr. Bosun Tijani, The Honourable Minister of Communication, Innovation & Digital Economy and the 3MTT Team.", "also, to my Able Community Manager, Mr. Anosike Mmerichukwu, 3MTT Enugu."];
+      const el = document.getElementById("typewriter");
+
+      let sleepTime = 100;
+
+      let curPhraseIndex = 0;
+
+      const writeLoop = async () => {
+        while (true) {
+          let curWord = phrases[curPhraseIndex];
+
+          for (let i = 0; i < curWord.length; i++) {
+            el.innerText = curWord.substring(0, i + 1);
+            await sleep(sleepTime);
+          }
+
+          await sleep(sleepTime * 10);
+
+          for (let i = curWord.length; i > 0; i--) {
+            el.innerText = curWord.substring(0, i - 1);
+            await sleep(sleepTime);
+          }
+
+          await sleep(sleepTime * 5);
+
+          if (curPhraseIndex === phrases.length - 1) {
+            curPhraseIndex = 0;
+          } else {
+            curPhraseIndex++;
+          }
+        }
+      };
+
+      writeLoop();
+    </script>
 </body>
 </html>
