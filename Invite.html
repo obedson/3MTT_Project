@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,30 +15,37 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            overflow-x: hidden;
+            box-sizing: border-box;
         }
+
         .container {
             max-width: 400px;
             width: 100%;
-            margin: 20px;
+            margin: 70px 20px 20px 20px;
             padding: 20px;
             background-color: white;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
             border-radius: 10px;
         }
+
         .header {
             font-size: 24px;
             margin-bottom: 10px;
         }
+
         .description {
             font-size: 14px;
             color: #666;
             margin-bottom: 20px;
         }
+
         .amount {
             font-size: 48px;
             margin: 20px 0;
         }
+
         .claim-button {
             background-color: #d6c1fa;
             border: none;
@@ -48,17 +56,26 @@
             cursor: pointer;
             margin-bottom: 20px;
         }
+
+        .frens-list {
+            max-height: 150px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+
         .frens {
             display: flex;
             align-items: center;
             justify-content: space-between;
             margin-bottom: 10px;
         }
+
         .frens img {
             width: 50px;
             height: 50px;
             border-radius: 50%;
         }
+
         .invite-button {
             background-color: #5953f1;
             border: none;
@@ -68,128 +85,310 @@
             font-size: 16px;
             cursor: pointer;
             margin-top: 20px;
-        }
-        .footer {
-            display: flex;
-            justify-content: space-around;
-            padding: 10px;
-            background-color: #f5f5f5;
-            position: fixed;
-            bottom: 0;
+            display: block;
             width: 100%;
-            box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
-        }
-        .footer div {
+            max-width: 300px;
+            margin: 20px auto;
             text-align: center;
         }
-        .footer a {
+
+        .invite-button:hover {
+            background-color: #463ebf; /* Darker shade on hover */
+        }
+
+        .header-navbar {
+            width: 100%;
+            background-color: #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            box-sizing: border-box;
+        }
+
+        .header-navbar a {
+            color: white;
             text-decoration: none;
-            color: #666;
+            padding: 10px;
         }
-        .footer .material-icons {
-            font-size: 24px;
+
+        .header-navbar .menu,
+        .header-navbar .close {
+            cursor: pointer;
+            color: white;
         }
-        .footer span {
+
+        .header-navbar .close {
+            display: none;
+        }
+
+        .header-navbar nav {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            background-color: #333;
+        }
+
+        .header-navbar .menu.active + nav,
+        .header-navbar .close.active + nav {
+            display: flex;
+        }
+
+        .header-navbar .menu.active {
+            display: none;
+        }
+
+        .header-navbar .close.active {
             display: block;
-            font-size: 12px;
         }
+
+        .navbar {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            background-color: #333;
+            position: fixed;
+            bottom: 0;
+            padding: 10px 0;
+            box-sizing: border-box;
+            z-index: 999; /* Ensures footer is behind the link container */
+        }
+
+        .navbar div {
+            color: white;
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .navbar div .material-icons {
+            font-size: 30px;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .link-container {
+            margin-top: 20px;
+            display: none;
+            position: relative;
+            z-index: 1001; /* Ensures it appears above the footer */
+        }
+
+        #invite-link {
+            margin-top: 10px;
+            display: block;
+            font-size: 16px;
+            width: 100%;
+            text-align: center;
+        }
+
         @media (min-width: 768px) {
             .container {
-                margin: 40px auto;
+                margin: 90px auto 20px auto;
                 padding: 30px;
             }
+
             .header {
                 font-size: 28px;
             }
+
             .description {
                 font-size: 16px;
             }
+
             .amount {
                 font-size: 60px;
             }
+
             .claim-button {
                 font-size: 18px;
                 padding: 12px 24px;
             }
+
             .frens img {
                 width: 60px;
                 height: 60px;
             }
+
             .invite-button {
                 font-size: 18px;
                 padding: 12px 24px;
             }
-            .footer .material-icons {
-                font-size: 28px;
-            }
-            .footer span {
-                font-size: 14px;
+
+            .navbar div .material-icons {
+                font-size: 36px;
             }
         }
     </style>
 </head>
+
 <body>
 
-<div class="container">
-    <div class="header">Invite Frens</div>
-    <div class="description">
-        Earn 20% for your direct referrals, 10% for their referrals, then 5%, 2.5%, and 1.25% for your fifth-level referrals.
-        Plus earn 15,000 SECOND for each invite, while your friend receives 30,000!
+    <div class="header-navbar">
+        <a href="Register.html">Register Now</a> |
+        <h2>Find X</h2>
+        <span class="material-icons menu">menu</span>
+        <span class="material-icons close">close</span>
+        <nav>
+            <a href="#">Dashboard</a>
+            <a href="#">Blog</a>
+            <a href="#">Partner</a>
+            <a href="#">Our Mission</a>
+            <a href="#wallet">Wallet</a>
+        </nav>
     </div>
-    <div class="amount" id="amount">$0</div>
-    <button class="claim-button" id="claim-button">Claim</button>
-    <div class="frens">
-        <div>
-            <img src="https://via.placeholder.com/50" alt="profile picture" id="profile-pic">
-            <span id="username">mrzinaskey</span>
+
+    <div class="container">
+        <div class="header">Invite Frens</div>
+        <div class="description">
+            Earn 20% for your direct referrals, 10% for their referrals, then 5%, 2.5%, and 1.25% for your fifth-level
+            referrals. Plus earn 15,000 $XPOINT for each invite, while your friend receives 30,000!
         </div>
-        <span id="points">496,800</span>
-    </div>
-    <button class="invite-button" id="invite-button">Invite a Fren</button>
-</div>
+        <div class="amount" id="amount">$0</div>
+        <button class="claim-button" id="claim-button">Claim</button>
 
-<div class="footer">
-    <div>
-        <a href="index.html">
-            <i class="material-icons">home</i>
-            <span>Home</span>
-        </a>
-    </div>
-    <div>
-        <a href="#tasks">
-            <i class="material-icons">assignment</i>
-            <span>Tasks</span>
-        </a>
-    </div>
-    <div>
-        <a href="#frens">
-            <i class="material-icons">group</i>
-            <span>Frens</span>
-        </a>
-    </div>
-    <div>
-        <a href="Activity.html">
-            <i class="material-icons">emoji_events</i>
-            <span>Activity</span>
-        </a>
-    </div>
-    <div>
-        <a href="quests.html">
-            <i class="material-icons">monetization_on</i>
-            <span>Earn</span>
-        </a>
-    </div>
-    <div>
-        <a href="#wallet">
-            <i class="material-icons">account_balance_wallet</i>
-            <span>Wallet</span>
-        </a>
-    </div>
-</div>
+        <!-- Scrollable frens list -->
+        <div class="frens-list">
+            <div class="frens">
+                <div>
+                    <img src="/assets/images/Musk.jpeg" alt="profile picture" id="profile-pic">
+                    <span id="username">Musk</span>
+                </div>
+                <span id="points">496,800</span>
+            </div>
+            <!-- Repeat the .frens div as needed -->
+            <div class="frens">
+                <div>
+                    <img src="/assets/images/Markz.jpeg" alt="profile picture" id="profile-pic">
+                    <span id="username">Mark</span>
+                </div>
+                <span id="points">320,000</span>
+            </div>
+            <div class="frens">
+                <div>
+                    <img src="/assets/images/Jack.jpg" alt="profile picture" id="profile-pic">
+                    <span id="username">Jack</span>
+                </div>
+                <span id="points">275,500</span>
+            </div>
+            <div class="frens">
+                <div>
+                    <img src="/assets/images/Biz.jpg" alt="profile picture" id="profile-pic">
+                    <span id="username">Biz</span>
+                </div>
+                <span id="points">450,200</span>
+            </div>
+            <div class="frens">
+                <div>
+                    <img src="/assets/images/Page.jpg" alt="profile picture" id="profile-pic">
+                    <span id="username">Page</span>
+                </div>
+                <span id="points">150,000</span>
+            </div>
+            <div class="frens">
+                <div>
+                    <img src="/assets/images/Jeff.jpg" alt="profile picture" id="profile-pic">
+                    <span id="username">Jeff</span>
+                </div>
+                <span id="points">100,000</span>
+            </div>
+        </div>
 
-<script src="https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.8/firebase-database.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="script.js"></script>
+        <button class="invite-button" id="invite-button">Invite a Fren</button>
+
+        <!-- Link generation and copy functionality -->
+        <div class="link-container" id="link-container">
+            <p>Your invite link:</p>
+            <input type="text" id="invite-link" readonly>
+            <button class="invite-button" onclick="copyLink()">Copy Link</button>
+        </div>
+    </div>
+
+    <div class="navbar">
+        <div>
+            <a href="index.html">
+                <span class="material-icons">home</span>
+                <div>Home</div>
+            </a>
+        </div>
+        <div>
+            <a href="#tasks">
+                <span class="material-icons">assignment</span>
+                <div>Invite</div>
+            </a>
+        </div>
+        <div>
+            <a href="#frens">
+                <span class="material-icons">group</span>
+                <div>Frens</div>
+            </a>
+        </div>
+        <div>
+            <a href="Activity.html">
+                <span class="material-icons">emoji_events</span>
+                <div>Activity</div>
+            </a>
+        </div>
+        <div>
+            <a href="quests.html">
+                <span class="material-icons">monetization_on</span>
+                <div>Earn</div>
+            </a>
+        </div>
+        
+    </div>
+
+    <script>
+        const menuIcon = document.querySelector('.menu');
+        const closeIcon = document.querySelector('.close');
+        const navMenu = document.querySelector('nav');
+
+        menuIcon.addEventListener('click', () => {
+            navMenu.style.display = 'flex';
+            menuIcon.style.display = 'none';
+            closeIcon.style.display = 'block';
+        });
+
+        closeIcon.addEventListener('click', () => {
+            navMenu.style.display = 'none';
+            menuIcon.style.display = 'block';
+            closeIcon.style.display = 'none';
+        });
+
+        // Claim button event listener
+        document.getElementById('claim-button').addEventListener('click', function () {
+            const amountElement = document.getElementById('amount');
+            const currentAmount = parseFloat(amountElement.innerText.replace('$', ''));
+            const newAmount = currentAmount + 200; // Adds $200 each time the button is clicked
+            amountElement.innerText = `$${newAmount.toFixed(2)}`;
+        });
+
+        // Invite button event listener
+        document.getElementById('invite-button').addEventListener('click', function () {
+            const baseUrl = 'https://example.com/invite'; // Replace with your base URL
+            const inviteCode = '123ABC'; // Replace with a dynamic invite code if needed
+            const inviteLink = `${baseUrl}?code=${inviteCode}`;
+
+            // Set the invite link in the input field and show the link container
+            document.getElementById('invite-link').value = inviteLink;
+            document.getElementById('link-container').style.display = 'block';
+        });
+
+        // Function to copy invite link
+        function copyLink() {
+            const inviteLinkField = document.getElementById('invite-link');
+            inviteLinkField.select();
+            document.execCommand('copy');
+            alert('Invite link copied to clipboard!');
+        }
+    </script>
+
 </body>
+
 </html>
